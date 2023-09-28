@@ -56,7 +56,7 @@ jobs:
         run: cd ${{ github.workspace }}
       - uses: actions/checkout@v3
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag jawahar6/restaurant_demo_node_app:$(date +%s)
+        run: docker build ${{ github.workspace }} --file Dockerfile --no-cache --progress=plain --tag jawahar6/restaurant_demo_node_app:$(date +%s)
       - name: listing images
         run: docker image ls
       - name: docker push
