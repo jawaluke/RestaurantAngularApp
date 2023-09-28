@@ -49,14 +49,16 @@ jobs:
         with:
           name: dis
       - name: List files in the repository
-        run: ls ${{ github.workspace }}
+        run: ls -lhR -a
       - name: workspace
         run: echo ${{ github.workspace }}
-      - name: Move to the workspace
-        run: cd ${{ github.workspace }}
       - uses: actions/checkout@v3
+        with:
+          path: ${{ github.workspace }}
+      - name: List files in the repository
+        run: ls -lhR -a
       - name: Build the Docker image
-        run: docker build ${{ github.workspace }} --file Dockerfile --no-cache --progress=plain --tag jawahar6/restaurant_demo_node_app:$(date +%s)
+        run: docker build . --file Dockerfile --no-cache --progress=plain --tag jawahar6/restaurant_demo_node_app:$(date +%s)
       - name: listing images
         run: docker image ls
       - name: docker push
