@@ -1,0 +1,20 @@
+.align-center-item {
+  display: flex;
+  justify-content: center;
+}
+
+.input-text {
+  width: 80%;
+  border-bottom: 2px solid blue;
+}
+
+#login-page-image {
+  height: 250px;
+  background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signup-button {
+  position: relative;
+  float: right;
+}
