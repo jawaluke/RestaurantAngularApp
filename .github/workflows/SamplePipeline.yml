@@ -32,7 +32,7 @@ jobs:
       - name: viewing..
         run: dir
       - name: Uploading artifact
-      - uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
           name: dis
           path: |
