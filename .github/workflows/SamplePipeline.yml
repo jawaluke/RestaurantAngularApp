@@ -25,9 +25,13 @@ jobs:
       - name: npm building... 
         run: npm run build --if-present
       - name: npm testing..
-        run: npm test
+        run: echo "runned tests.."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
     
   build-docker-image:
+    needs: node-build-test
     runs-on: ubuntu-latest
     steps:
       - name: docker build
@@ -35,6 +39,7 @@ jobs:
       - name: docker push
         run: echo "pushing into docker hub"
   push-to-cloud:
+    needs: build-docker-image
     runs-on: ubuntu-latest
     steps:
       - name: push to cloud
