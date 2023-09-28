@@ -43,6 +43,10 @@ jobs:
     needs: node-build-test
     runs-on: ubuntu-latest
     steps:
+      - name: downloading uploaded artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dis
       - name: List files in the repository
         run: |
             ls ${{ github.workspace }}
