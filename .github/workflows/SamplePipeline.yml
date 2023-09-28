@@ -28,6 +28,7 @@ jobs:
         run: npm test
     
   build-docker-image:
+    runs-on: ubuntu-latest
     steps:
       - name: docker build
         run: echo "building docker image"
