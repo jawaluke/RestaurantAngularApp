@@ -21,7 +21,7 @@ jobs:
       - name: Installing dependencies..
         run: npm ci
       - name: npm building...
-        run: npm run build -configuration production
+        run: npm run build
       - name: npm testing..
         run: echo "runned tests.."
       - name: List files in the repository
