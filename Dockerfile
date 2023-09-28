@@ -15,10 +15,10 @@ RUN echo "hello world"
 RUN ls -alh
 RUN echo $(ls -alh)
 # Copy dist folder fro build stage to nginx public folder
-#COPY /dist /usr/share/nginx/html
+COPY /home/runner/work/RestaurantAngularApp/RestaurantAngularApp/dist/restaurant-app /usr/share/nginx/html
 
 RUN ls -alh
 
 
 # Start NgInx service
-#CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]

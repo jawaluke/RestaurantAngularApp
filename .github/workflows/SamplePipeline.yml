@@ -48,7 +48,9 @@ jobs:
         with:
           name: dis
       - name: List files in the repository
-        run: ls
+        run: |
+        ls ${{ github.workspace }}
+        echo "${{ github.workspace }}"
       - name: files
         run: dir
       - uses: actions/checkout@v3
