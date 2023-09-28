@@ -9,7 +9,7 @@ RUN rm -rf /usr/share/nginx/html/* && rm -rf /etc/nginx/nginx.conf
 # Copy nginx config file
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
-#COPY . .
+COPY . .
 RUN echo "hello world"
 
 RUN ls -alh
