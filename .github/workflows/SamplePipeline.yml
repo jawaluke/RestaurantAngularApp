@@ -33,11 +33,11 @@ jobs:
         run: dir
       - name: Uploading artifact
       - uses: actions/upload-artifact@v3
-          with:
-            name: dis
-            path: |
-              dist/
-              nginx.conf
+        with:
+          name: dis
+          path: |
+            dist/
+            nginx.conf
 
   build-docker-image:
     needs: node-build-test
