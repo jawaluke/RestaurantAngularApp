@@ -65,5 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: push to cloud
-        run: echo "publishing it to zeet cloud"
+        env:
+          zeet_cloud_hook_url: https://api.render.com/deploy/srv-cka8jnqa8h2s73bdb5t0?key=Hgaec601Dwk
+        run: curl "$zeet_cloud_hook_url"
 
