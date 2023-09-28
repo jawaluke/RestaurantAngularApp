@@ -31,8 +31,13 @@ jobs:
         run: cd dist
       - name: viewing..
         run: dir
-      - name: Go back to org dir
-        run: cd ..
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v3
+          with:
+            name: dist
+            path: |
+              dist/
+              nginx.conf
 
   build-docker-image:
     needs: node-build-test
