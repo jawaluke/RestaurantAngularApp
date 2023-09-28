@@ -3,8 +3,6 @@ name: Sample pipeline
 on:
   push:
     branches: main
-    
-
 
 jobs:
   node-build-test:
@@ -22,8 +20,8 @@ jobs:
           cache: 'npm'
       - name: Installing dependencies..
         run: npm ci
-      - name: npm building... 
-        run: npm run build --if-present
+      - name: npm building...
+        run: npm run build -configuration production
       - name: npm testing..
         run: echo "runned tests.."
       - name: List files in the repository
@@ -32,14 +30,17 @@ jobs:
       - name: List dir of dist
         run: cd dist
       - name: viewing..
-        run: ls
+        run: dir
       - name: Go back to org dir
         run: cd ..
-    
+
   build-docker-image:
     needs: node-build-test
     runs-on: ubuntu-latest
     steps:
+      - name: List files in the repository
+        run: |
+            ls ${{ github.workspace }}
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag jawahar6/restaurant_demo_node_app:$(date +%s)
@@ -53,4 +54,4 @@ jobs:
     steps:
       - name: push to cloud
         run: echo "publishing it to zeet cloud"
- 
+

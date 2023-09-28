@@ -10,7 +10,7 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN ls
 # Copy dist folder fro build stage to nginx public folder
-COPY /dist /usr/share/nginx/html
+COPY ./dist /usr/share/nginx/html
 
 # Start NgInx service
 CMD ["nginx", "-g", "daemon off;"]
