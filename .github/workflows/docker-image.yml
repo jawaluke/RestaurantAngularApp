@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI and Push
 
 on:
   push:
@@ -15,4 +15,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag jawahar6/restaurant_demo_node_app:$(date +%s)
+      # run: docker build . --file Dockerfile --tag jawahar6/restaurant_demo_node_app:$(date +%s)
+
+   push-to-cloud:
+      runs-on: ubuntu-latest
+      steps:
+      -name: push image
+       run: echo "pushing the image to create container.."
+      
