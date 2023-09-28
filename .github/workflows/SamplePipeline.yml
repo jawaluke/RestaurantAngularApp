@@ -1,0 +1,20 @@
+name: Sample pipeline
+
+on:
+  push:
+    branches: main
+
+jobs:
+  build-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: docker build
+        run: echo "building docker image"
+      - name: docker push
+        run: echo "pushing into docker hub"
+  push-to-cloud:
+    runs-on: ubuntu-latest
+    steps:
+      - name: push to cloud
+        run: echo "publishing it to zeet cloud"
+ 
