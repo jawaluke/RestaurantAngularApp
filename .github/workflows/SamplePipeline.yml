@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
       - uses: actions/checkout@v3
@@ -29,6 +29,12 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: List dir of dist
+        run: cd dist
+      - name: viewing..
+        run: ls
+      - name: Go back to org dir
+        run: cd ..
     
   build-docker-image:
     needs: node-build-test
