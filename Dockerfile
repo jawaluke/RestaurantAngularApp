@@ -15,7 +15,7 @@ RUN echo "hello world"
 RUN ls -alh
 RUN echo $(ls -alh)
 # Copy dist folder fro build stage to nginx public folder
-COPY /home/runner/work/RestaurantAngularApp/RestaurantAngularApp/dist/restaurant-app /usr/share/nginx/html
+COPY dist/restaurant-app /usr/share/nginx/html
 
 RUN ls -alh
 

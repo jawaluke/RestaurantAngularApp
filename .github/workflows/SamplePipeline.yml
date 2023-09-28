@@ -38,6 +38,7 @@ jobs:
           path: |
             dist/
             nginx.conf
+            Dockerfile
 
   build-docker-image:
     needs: node-build-test
@@ -51,6 +52,8 @@ jobs:
         run: ls ${{ github.workspace }}
       - name: workspace
         run: echo ${{ github.workspace }}
+      - name: Move to the workspace
+        run: cd ${{ github.workspace }}
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag jawahar6/restaurant_demo_node_app:$(date +%s)
