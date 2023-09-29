@@ -60,6 +60,8 @@ jobs:
         run: docker image ls
       - name: docker push
         run: echo "pushing into docker hub"
+      - name: docker hub login
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_USER_SERVICEACCOUNT_ACCESS_TOKEN }}
   push-to-cloud:
     needs: build-docker-image
     runs-on: ubuntu-latest

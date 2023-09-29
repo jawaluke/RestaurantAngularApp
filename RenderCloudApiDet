@@ -2,4 +2,7 @@
   Render: {
     APIKEY: rnd_luYPKsGSLiXo2sIxbnaFEPQhUCnj
   }
+  Docker: {
+    service-account-access-token: dckr_pat_YZ9Qab_EHxll8eAt73Z-u3HwgeE
+  }
 }
