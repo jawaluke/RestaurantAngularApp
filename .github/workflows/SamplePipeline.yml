@@ -27,10 +27,6 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: List dir of dist
-        run: cd dist
-      - name: viewing..
-        run: dir
       - name: Uploading artifact
         uses: actions/upload-artifact@v3
         with:
@@ -52,8 +48,6 @@ jobs:
         run: ls -lhR -a
       - name: workspace
         run: echo ${{ github.workspace }}
-      - name: List files in the repository
-        run: ls -lhR -a
       - name: Build the Docker image
         run: docker build . --file Dockerfile --no-cache --progress=plain --tag jawahar6/restaurant_demo_node_app:1.2
       - name: listing images
@@ -67,15 +61,10 @@ jobs:
           docker push jawahar6/restaurant_demo_node_app:1.2
           echo "pushed image to hub"
 
-
   push-to-cloud:
     needs: build-docker-image
     runs-on: ubuntu-latest
     steps:
-      - name: set secret
-        env:
-          SUPER_SECRET: ${{ secrets.RENDER_CLOUD_API_KEY }}
-        run: echo $SUPER_SECRET
       - name: push to cloud
         env:
           zeet_cloud_hook_url: https://api.render.com/deploy/srv-cka8jnqa8h2s73bdb5t0?key=Hgaec601Dwk
