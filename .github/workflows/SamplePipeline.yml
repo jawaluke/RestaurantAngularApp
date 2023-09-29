@@ -64,6 +64,10 @@ jobs:
     needs: build-docker-image
     runs-on: ubuntu-latest
     steps:
+      - name: set secret
+        env:
+          SUPER_SECRET: ${{ secrets.RENDER_CLOUD_API_KEY }}
+        run: echo $SUPER_SECRET
       - name: push to cloud
         env:
           zeet_cloud_hook_url: https://api.render.com/deploy/srv-cka8jnqa8h2s73bdb5t0?key=Hgaec601Dwk
