@@ -55,13 +55,19 @@ jobs:
       - name: List files in the repository
         run: ls -lhR -a
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --no-cache --progress=plain --tag jawahar6/restaurant_demo_node_app:$(date +%s)
+        run: docker build . --file Dockerfile --no-cache --progress=plain --tag jawahar6/restaurant_demo_node_app:1.2
       - name: listing images
         run: docker image ls
       - name: docker push
         run: echo "pushing into docker hub"
       - name: docker hub login
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_USER_SERVICEACCOUNT_ACCESS_TOKEN }}
+      - name: docker push to hub
+        run: |
+          docker push jawahar6/restaurant_demo_node_app:1.2
+          echo "pushed image to hub"
+
+
   push-to-cloud:
     needs: build-docker-image
     runs-on: ubuntu-latest
